@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Project Ibee</title>
+    <meta name="description" content="Project Ibee">
+    <meta name="keywords" content="twitter app">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.png">
+    <link rel="stylesheet" href="components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div role="main" ui-view="content" class="app-content">
+      <div ng-controller="SearchController" class="SearchController">
+        <header><img src="/img/logo.png" alt="logo"></header>
+        <div class="search-section">
+          <div class="form-group">
+            <input type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel">
+            <button id="button-search" ng-click="searchClick()">Search</button>
+            <no-data ng-if="!loading &amp;&amp; nodata"></no-data>
+          </div>
+        </div>
+        <div id="response-container">
+          <loading ng-show="loading"></loading>
+          <div ng-repeat="tweet in tweetsRes" ng-if="!loading">
+            <div id="clearBox" class="content-section">
+              <div class="wrapper">
+                <div class="wrap-response">
+                  <div class="block-header">
+                    <div class="user-detail"><img src="{{tweet.user.profile_image_url}}" alt="logo">
+                      <div class="detail-wrap">
+                        <div class="title-name">{{tweet.user.name}}</div>
+                        <div class="title-who">@{{tweet.user.screen_name}}  •  {{tweet.created_at | moment: 'format': 'DD MMM YYYY' }}</div>
+                      </div>
+                    </div>
+                    <div class="collapse"><i data-chev="{{$index}}" ng-click="toggle($index)" class="fa fa-chevron-up"></i></div>
+                  </div>
+                  <div data-text="{{$index}}" class="description">{{tweet.text}}</div>
+                  <div data-id="{{$index}}" class="block-body">
+                    <div ng-show="tweet.entities.media" class="image"><img src="{{tweet.entities.media[0].media_url}}"></div>
+                    <div class="block-footer">
+                      <div class="social-icons"><i class="fa fa-reply"></i><i ng-class="{'tweet-active': tweet.retweeted}" ng-click="retweet(tweet.id_str)" class="fa fa-retweet"></i>{{tweet.retweet_count}}<i ng-class="{'heart-active': tweet.favorited}" ng-click="favorite(tweet.id_str)" class="fa fa-heart"></i>{{tweet.favorite_count}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/moment/min/moment.min.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-animate/angular-animate.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

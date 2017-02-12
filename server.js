@@ -66,6 +66,26 @@ app.post('/api/favorites/', function(req, res){
     });
 });
 
+app.post('/api/unretweet/', function(req, res){
+   if (!req.body) return res.sendStatus(400);
+    var untweetId = req.body.id;
+    client.post('statuses/unretweet/' + untweetId + '.json', function(error, unretweet, response){
+        if (!error){
+            res.send({unret: unretweet})
+        }
+    })
+});
+
+app.post('/api/unfavorites/', function(req, res){
+    if (!req.body) return res.sendStatus(400);
+
+    client.post('favorites/destroy', {id: req.body.id}, function(error, destfavs, response) {
+        if (!error) {
+            res.send( { favorites: destfavs });
+        }
+
+    });
+});
 
 var port = 3030;
 app.listen(port, function(){

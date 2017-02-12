@@ -16,25 +16,31 @@ header {
   display: flex;
   justify-content: center;
   input {
-    height: 4rem;
-    width: 27rem;
+    height: 63px;
+    width: 420px;
     border: 1px solid #e4ebf1;
-    border-bottom-left-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
     font-size: 18px;
     padding-left: 20px;
     font-family: 'Open Sans', sans-serif;
     color: #737a81;
+    -webkit-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.10);
+    -moz-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.10);
+    box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.10);
   }
   button {
     background-color: #4abce6;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     border: none;
     color: #fff;
-    width: 8rem;
+    width: 130px;
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
+    position: relative;
+    right: 5px;
+    height: 66px;
   }
 }
 
@@ -44,12 +50,15 @@ header {
 .content-section {
   margin-top: 20px;
   .wrapper {
-    width: 540px;
+    width: 534px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 0.5rem;
+    border-radius: 5px;
     border: 1px solid #e4ebf1;
+    -webkit-box-shadow: 1px 2px 15px 2px rgba(0,0,0,0.10);
+    -moz-box-shadow: 1px 2px 15px 2px rgba(0,0,0,0.10);
+    box-shadow: 1px 2px 15px 2px rgba(0,0,0,0.10);
   }
   .wrap-response {
     width: 100%;
@@ -67,10 +76,11 @@ header {
   .user-detail {
     display: flex;
     img {
-      border-radius: 0.5rem;
+      border-radius: 5px;
     }
     .detail-wrap {
       padding-left: 10px;
+      margin-top: 5px;
     }
     .title-name {
       font-weight: 700;
@@ -85,7 +95,7 @@ header {
   .block-body {
     img {
       width: 100%;
-      border-radius: 0.5rem;
+      border-radius: 5px;
       border: 1px solid #e4ebf1;
     }
   }
@@ -111,12 +121,10 @@ header {
   }
 }
 //toggle classes
-.toggleChevron i {
+.toggleChevron {
   transform: rotate(180deg);
 }
-.hide-div {
-  display: none;
-}
+
 .tweet-active{
   color: #19cf86;
 }
@@ -141,5 +149,19 @@ header {
   color: #f55252;
   h4 {
     font-weight:400;
+  }
+}
+loading {
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+}
+no-data {
+  color: #f55252;
+  .nodata-error {
+    margin-top: 10px;
   }
 }

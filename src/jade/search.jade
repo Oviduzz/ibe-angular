@@ -1,0 +1,35 @@
+div.SearchController(ng-controller="SearchController")
+    header
+        img(src="/img/logo.png" alt="logo")
+    .search-section
+        .form-group
+            input(type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel")
+            button#button-search(ng-click='searchClick()')
+                | Search
+            no-data(ng-if='!loading && nodata')
+    #response-container
+        loading(ng-show='loading')
+        div(ng-repeat='tweet in tweetsRes' ng-if='!loading')
+            #clearBox.content-section
+                .wrapper
+                    .wrap-response
+                        .block-header
+                            .user-detail
+                                img(src='{{tweet.user.profile_image_url}}', alt='logo')
+                                .detail-wrap
+                                    .title-name {{tweet.user.name}}
+                                    .title-who @{{tweet.user.screen_name}}  •  {{tweet.created_at | moment: 'format': 'DD MMM YYYY' }}
+                            .collapse
+                                i.fa.fa-chevron-up(data-chev='{{$index}}' ng-click='toggle($index)')
+                        .description(data-text='{{$index}}')
+                            | {{tweet.text}}
+                        .block-body(data-id='{{$index}}')
+                            .image(ng-show='tweet.entities.media')
+                                img(src='{{tweet.entities.media[0].media_url}}')
+                            .block-footer
+                                .social-icons
+                                    i.fa.fa-reply
+                                    i.fa.fa-retweet(ng-class="{'tweet-active': tweet.retweeted}" ng-click='retweet(tweet.id_str)')
+                                    | {{tweet.retweet_count}}
+                                    i.fa.fa-heart(ng-class="{'heart-active': tweet.favorited}" ng-click='favorite(tweet.id_str)')
+                                    | {{tweet.favorite_count}}

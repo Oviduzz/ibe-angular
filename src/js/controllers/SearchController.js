@@ -1,3 +1,3 @@
-/**
- * Created by Ovidiu on 2/9/2017.
- */
+app.controller('SearchController', ['$scope', function ($scope) {
+    $scope.login = 'Login page';
+}]);

@@ -1,0 +1,23 @@
+doctype
+html(lang="en" class="no-js" ng-app="app")
+    head
+        meta(charset="utf-8")
+        title Project Ibee
+        meta(name="description" content="Project Ibee")
+        meta(name="keywords" content="twitter app")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel="shortcut icon" type="image/png" href="img/favicon/favicon.png")
+        link(rel="stylesheet" href="components/components-font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet" href="css/main.css")
+    body
+        div.app-content(role='main' ui-view='content')
+            include search.jade
+        script(src="components/jquery/dist/jquery.js")
+        script(src="components/moment/min/moment.min.js")
+        script(src="components/angular/angular.js")
+        script(src="components/angular-sanitize/angular-sanitize.min.js")
+        script(src="components/angular-resource/angular-resource.js")
+        script(src="components/angular-animate/angular-animate.js")
+        script(src="components/angular-bootstrap/ui-bootstrap.min.js")
+        script(src="components/angular-bootstrap/ui-bootstrap-tpls.min.js")
+        script(src="js/app.js")

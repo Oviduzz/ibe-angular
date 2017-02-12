@@ -8,6 +8,8 @@
   "authors": "Ovidiu Grigoras",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -15,8 +17,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "body-parser": "^1.16.0",
-    "express": "^4.14.1",
+    "nodemon": "^1.11.0",
     "twitter": "^1.7.0"
   }
 }

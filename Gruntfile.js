@@ -21,7 +21,7 @@ module.exports = function (grunt){
         sass: {
             dist: {
                 files: {
-                    'app/css/main.css': 'src/sass/main.sass'
+                    'app/css/main.css': 'src/css/main.scss'
                 }
             }
         },
@@ -48,7 +48,7 @@ module.exports = function (grunt){
         uglify: {
             my_target: {
                 files: {
-                    'app/js/main.min.js': 'src/js/index.js'
+                    'app/js/app.js': 'src/js/app.js'
                 }
             }
         },
