@@ -16,6 +16,7 @@ header {
   display: flex;
   justify-content: center;
   input {
+    outline: none;
     height: 63px;
     width: 420px;
     border: 1px solid #e4ebf1;
@@ -41,6 +42,7 @@ header {
     position: relative;
     right: 5px;
     height: 66px;
+    cursor: pointer;
   }
 }
 
@@ -72,6 +74,9 @@ header {
   .block-header {
     display: flex;
     justify-content: space-between;
+  }
+  .collapse i {
+    cursor: pointer;
   }
   .user-detail {
     display: flex;
@@ -132,13 +137,18 @@ header {
   color: #e2264d;
 }
 .truncate {
-  width: 540px;
+  width: 530px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#no-data {
-  display:none;
+.repeater{
+  opacity: 0;
+  pointer-events: all;
+  transition: opacity .3s ease-in-out;
+}
+.repeater.active{
+  opacity: 1;
 }
 .display-data {
   display: flex!important;

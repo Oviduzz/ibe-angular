@@ -9,8 +9,9 @@ var Twitter = require('twitter');
 var client = new Twitter({
     consumer_key: 'SslhXz9ojX6cwFlDbwkdWOCF1',
     consumer_secret: 'VGUqb9F4MgE8xZFB7yAEFlT10kKDcATxndKV39FIauMPnZpOQk',
-    access_token_key: '828010236430651393-wzD0YJww6ANmqcNjJE3pc3R4BeKfoyq',
-    access_token_secret: 'U0uHnmb416CRnGTYSZcRKQTkCpR2TZLj5lMz9jnTISK8g'
+    access_token_key: '828010236430651393-ykb1hSAvDTtUFVuLlKuOxGjor7fhqHP',
+    access_token_secret: 'e06xlAKMoN5VdK3xCrsKaBrtVo5Juat93uHas1HkL6c8a',
+    callback_url : 'http://local.com/auth/twitter/callback/'
 });
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';

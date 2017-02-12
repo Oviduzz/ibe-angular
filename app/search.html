@@ -3,14 +3,16 @@
   <header><img src="/img/logo.png" alt="logo"/></header>
   <div class="search-section">
     <div class="form-group">
-      <input type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel"/>
-      <button id="button-search" ng-click="searchClick()">Search</button>
-      <no-data ng-if="!loading &amp;&amp; nodata"></no-data>
+      <form>
+        <input type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel"/>
+        <button id="button-search" ng-click="searchClick()">Search</button>
+        <no-data ng-if="!loading &amp;&amp; nodata"></no-data>
+      </form>
     </div>
   </div>
   <div id="response-container">
     <loading ng-show="loading"></loading>
-    <div ng-repeat="tweet in tweetsRes" ng-if="!loading">
+    <div ng-repeat="tweet in tweetsRes" ng-class="{&quot;active&quot;: tweetsRes.length &gt; 0 &amp;&amp; !loading}" class="repeater">
       <div id="clearBox" class="content-section">
         <div class="wrapper">
           <div class="wrap-response">
@@ -27,7 +29,7 @@
             <div data-id="{{$index}}" class="block-body">
               <div ng-show="tweet.entities.media" class="image"><img src="{{tweet.entities.media[0].media_url}}"/></div>
               <div class="block-footer">
-                <div class="social-icons"><i class="fa fa-reply"></i><i ng-class="{'tweet-active': tweet.retweeted}" ng-click="retweet(tweet.id_str)" class="fa fa-retweet"></i>{{tweet.retweet_count}}<i ng-class="{'heart-active': tweet.favorited}" ng-click="favorite(tweet.id_str)" class="fa fa-heart"></i>{{tweet.favorite_count}}</div>
+                <div class="social-icons"><i class="fa fa-reply"></i><i ng-class="{'tweet-active': tweet.retweeted}" ng-click="handleRetweet(tweet.id_str, tweet.retweeted)" class="fa fa-retweet"></i>{{tweet.retweet_count}}<i ng-class="{'heart-active': tweet.favorited}" ng-click="favorite(tweet.id_str)" class="fa fa-heart"></i>{{tweet.favorite_count}}</div>
               </div>
             </div>
           </div>

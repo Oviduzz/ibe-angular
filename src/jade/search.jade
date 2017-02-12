@@ -3,13 +3,14 @@ div.SearchController(ng-controller="SearchController")
         img(src="/img/logo.png" alt="logo")
     .search-section
         .form-group
-            input(type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel")
-            button#button-search(ng-click='searchClick()')
-                | Search
-            no-data(ng-if='!loading && nodata')
+            form
+                input(type="text" placeholder="Enter a twitter account" id="input-search" ng-model="searchModel")
+                button#button-search(ng-click='searchClick()')
+                    | Search
+                no-data(ng-if='!loading && nodata')
     #response-container
         loading(ng-show='loading')
-        div(ng-repeat='tweet in tweetsRes' ng-if='!loading')
+        div.repeater(ng-repeat='tweet in tweetsRes' ng-class='{"active": tweetsRes.length > 0 && !loading}')
             #clearBox.content-section
                 .wrapper
                     .wrap-response
@@ -29,7 +30,7 @@ div.SearchController(ng-controller="SearchController")
                             .block-footer
                                 .social-icons
                                     i.fa.fa-reply
-                                    i.fa.fa-retweet(ng-class="{'tweet-active': tweet.retweeted}" ng-click='retweet(tweet.id_str)')
+                                    i.fa.fa-retweet(ng-class="{'tweet-active': tweet.retweeted}" ng-click='handleRetweet(tweet.id_str, tweet.retweeted)')
                                     | {{tweet.retweet_count}}
-                                    i.fa.fa-heart(ng-class="{'heart-active': tweet.favorited}" ng-click='favorite(tweet.id_str)')
+                                    i.fa.fa-heart(ng-class="{'heart-active': tweet.favorited}" ng-click='handleFovorite(tweet.id_str, tweet.favorited)')
                                     | {{tweet.favorite_count}}
